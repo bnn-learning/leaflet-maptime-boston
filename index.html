@@ -1,6 +1,9 @@
 <html>
 <head>
-  <title>A Leaflet map!</title>
+  // Leaflet tutorial from Map Time Boston
+  // https://maptimeboston.github.io/leaflet-intro/
+
+  <title>Leaflet Tutorial map!</title>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
   <script src="jquery-2.1.1.min.js"></script> 
@@ -27,11 +30,29 @@
         minZoom: 9
       }).addTo(map);
 
-    // load GeoJSON from an external file
-    $.getJSON("rodents.geojson",function(data){
+    // add rats
+    // use jquery $.getJSON() to load GeoJSON from an external file
+    $.getJSON("rodents.geojson",function(data) 
+    {
+      var ratIcon = L.icon(
+      {
+        iconUrl: 'rat.png',
+        iconSize: [50,40]
+      });
+
       // add GeoJSON layer to the map once the file is loaded
-      L.geoJson(data).addTo(map);
+      L.geoJson(data ,
+      {
+        pointToLayer: function(feature, latlng)
+        {
+          var marker = L.marker(latlng, {icon: ratIcon});
+          marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.OPEN_DT);
+          return marker;
+        }
+      } ).addTo(map);
     });
+
+    
 
     //   // bike lanes
     // L.tileLayer('http://tiles.mapc.org/trailmap-onroad/{z}/{x}/{y}.png',
