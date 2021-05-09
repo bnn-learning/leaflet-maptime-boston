@@ -30,8 +30,9 @@
         minZoom: 9
       }).addTo(map);
 
-    // add rats
-    // use jquery $.getJSON() to load GeoJSON from an external file
+    // add rats layer from geojson file
+
+    // use jquery $.getJSON() to load GeoJSON file
     $.getJSON("rodents.geojson",function(data) 
     {
       var ratIcon = L.icon(
@@ -52,7 +53,11 @@
       } ).addTo(map);
     });
 
-    
+    // add neighborhoods polygons
+
+    $.getJSON("neighborhoods.geojson", function(hoodData){
+      L.geoJson( hoodData ).addTo(map);
+    });
 
     //   // bike lanes
     // L.tileLayer('http://tiles.mapc.org/trailmap-onroad/{z}/{x}/{y}.png',
