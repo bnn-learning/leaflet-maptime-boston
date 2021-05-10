@@ -4,6 +4,7 @@
   <title>A Leaflet map!</title>
   <link rel="stylesheet" href="./leaflet.css"/>
   <script src="./leaflet.js"></script>
+  <script src="./jquery-2.1.1.min.js"></script>
   <style>
     html, body { height: 100%}
     #map{ height: 100%; }
@@ -26,12 +27,17 @@
       minZoom: 9
     }).addTo(map);
 
-  // bike lanes
-  L.tileLayer('http://tiles.mapc.org/trailmap-onroad/{z}/{x}/{y}.png',
-  {
-    maxZoom: 17,
-    minZoom: 9
-  }) .addTo(map);
+  // load rodent point layer
+  $.getJSON("rodents.geojson", function(data){
+    L.geoJson(data).addTo(map);
+  });
+
+  // // bike lanes
+  // L.tileLayer('http://tiles.mapc.org/trailmap-onroad/{z}/{x}/{y}.png',
+  // {
+  //   maxZoom: 17,
+  //   minZoom: 9
+  // }) .addTo(map);
 
   </script>
 </body>
