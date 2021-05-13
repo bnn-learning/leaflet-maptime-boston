@@ -3,18 +3,42 @@
 <head>
  
   <title>Leaflet Tutorial map!</title>
-  <link rel="stylesheet" href="./Leaflet-1.7.1/leaflet.css"/>
-  <script src="./Leaflet-1.7.1/leaflet.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+
+   <!-- Make sure you put this AFTER Leaflet's CSS -->
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""> </script>
+
+  <!-- <link rel="stylesheet" href="./Leaflet-1.7.1/leaflet.css"/>
+  <script src="./Leaflet-1.7.1/leaflet.js"></script> -->
+
   <script src="jquery-2.1.1.min.js"></script> 
+
   <style>
     html, body {height: 100%}
     #map{ height: 100%}
   </style>
 </head>
 <body>
+  <div>
+    <h1>Exercise: Create a Leaflet Map</h1>
+    <p>This Leaflet map is based on Maptime Boston's Leaflet Tutorial written by Andy Woodruff, Ryan Mullins and Cristen Jones <br>
+      <a href="https://maptimeboston.github.io/leaflet-intro/">Maptime Boston's Leaflet Tutorial</a>
+    </p>
+    <p>I have modified the code to work with Leaflet 1.7.1</p>
+    <ul>
+      <li>Leaflet bug: height: 100% does not work on the map div</li>
+      <li>Workaround: add style html, body {height: 100%} in the head, so div's inherit 100%</li>
+      <li>Leaflet issue: default marker icons are not found locally</li>
+      <li>Fix: load Leaflet scripts and css from unpkg.com</li>
+    </ul>
+  </div>
 
   <div id="map"></div>
-<h1>test Leaflet 1.7.</h1>
 
   <script>
 
